@@ -192,21 +192,23 @@ If only pricing or only the one-liner was tweaked, that is NOT significant — d
 
 ### Step 5: Prompt next action
 
-After the report is written and `rejected-ideas.md` is updated, present the user with an interactive choice for what to do next.
+After the report is written and `rejected-ideas.md` is updated, prompt the user for what to do next.
 
 **If there are surviving ideas:**
 
-Extract each surviving idea's **final version** (post-reshape if reshaped) and present them as options using AskUserQuestion. For each surviving idea, prepare a clean, self-contained evaluate-idea prompt — the full final idea description without any reshape history or prior-gate context, suitable for a fresh `/evaluate-idea` run.
+First, for each surviving idea, prepare a clean, self-contained evaluate-idea prompt — the full final idea description without any reshape history or prior-gate context, suitable for a fresh `/evaluate-idea` run. Keep these prompts ready internally.
 
-Ask: "Which idea would you like to validate with a clean `/evaluate-idea` pass?"
+Then you MUST call the `AskUserQuestion` tool (not plain text — the actual tool) to let the user pick which idea to evaluate. Do NOT present options as markdown text. Use the tool with:
+- question: "Which idea would you like to validate with a clean /evaluate-idea pass?"
+- header: "Next step"
+- One option per surviving idea:
+  - label: the idea name
+  - description: one-liner + verdict summary (e.g., "Survived with 2 FLAGs (sales, legal), reshaped 1x")
+- Plus one final option:
+  - label: "Skip"
+  - description: "I'll review the report first"
 
-Options (one per surviving idea):
-- Label: the idea name
-- Description: one-liner + verdict summary (e.g., "Survived with 2 FLAGs (sales, legal), reshaped 1x")
-
-Include a "Skip — I'll review the report first" option.
-
-When the user picks an idea, run `/evaluate-idea` with the clean prompt you prepared. Do NOT ask the user to copy-paste it themselves — invoke the skill directly.
+When the user picks an idea, invoke the Skill tool with `skill: "evaluate-idea"` and pass the clean prompt you prepared as args. Do NOT ask the user to copy-paste anything.
 
 **If all ideas were killed:**
 

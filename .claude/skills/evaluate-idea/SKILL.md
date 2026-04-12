@@ -220,22 +220,28 @@ If only pricing or only the one-liner was tweaked, that is NOT significant.
 
 ### Step 5: Prompt next action
 
-After the report is written and `rejected-ideas.md` is updated (if applicable), present the user with an interactive choice for what to do next using AskUserQuestion.
+After the report is written and `rejected-ideas.md` is updated (if applicable), you MUST call the `AskUserQuestion` tool (not plain text — the actual tool) to let the user choose what to do next. Do NOT present options as markdown text.
 
 **If the idea SURVIVED (any variant — clean, with FLAGs, reshaped, or after debate):**
 
-Ask: "This idea survived the funnel. What would you like to do next?"
+Call the `AskUserQuestion` tool with:
+- question: "This idea survived the funnel. What would you like to do next?"
+- header: "Next step"
+- Options:
+  - label: "Build it", description: "Run /build-idea on this report to produce an executable dossier"
+  - label: "Re-evaluate the final version", description: "Run a fresh /evaluate-idea on the final reshaped form for extra confidence" — only include this option if the idea was reshaped during this run
+  - label: "Skip", description: "I'll review the report first"
 
-Options:
-- **Build it** (description: "Run `/build-idea` on this report to produce an executable dossier") — if selected, invoke `/build-idea` with the path to the report you just wrote (e.g., `output/evaluate-idea/YYYY-MM-DD-eval-slug.md`). Do NOT ask the user to copy-paste the path — invoke the skill directly.
-- **Re-evaluate the final version** (description: "Run a fresh `/evaluate-idea` on the final reshaped form for extra confidence") — only show this option if the idea was reshaped during this run. If selected, prepare a clean self-contained prompt from the final version (no reshape history, no prior-gate context) and invoke `/evaluate-idea` with it directly.
-- **Skip — I'll review the report first**
+When the user picks "Build it", invoke the Skill tool with `skill: "build-idea"` and pass the path to the report you just wrote as args. When the user picks "Re-evaluate", prepare a clean self-contained prompt from the final version (no reshape history, no prior-gate context) and invoke the Skill tool with `skill: "evaluate-idea"` and the clean prompt as args.
 
 **If the idea was KILLED:**
 
-Ask: "This idea was killed at the [gate] gate. What would you like to do?"
+Call the `AskUserQuestion` tool with:
+- question: "This idea was killed at the [gate] gate. What would you like to do?"
+- header: "Next step"
+- Options:
+  - label: "Try a pivot", description: "Describe a modified version and run /evaluate-idea on it"
+  - label: "Generate fresh ideas", description: "Run /find-ideas for a new batch"
+  - label: "Done for now", description: "Stop here"
 
-Options:
-- **Try a pivot** (description: "Run `/evaluate-idea` with a modified version of the idea") — if selected, ask the user to describe their pivot, then invoke `/evaluate-idea` with their input.
-- **Generate fresh ideas** (description: "Run `/find-ideas` for a new batch") — if selected, invoke `/find-ideas` directly.
-- **Done for now**
+When the user picks "Try a pivot", use AskUserQuestion again to ask them to describe their pivot (or accept their "Other" text input), then invoke the Skill tool with `skill: "evaluate-idea"` and their input as args. When the user picks "Generate fresh ideas", invoke the Skill tool with `skill: "find-ideas"`.

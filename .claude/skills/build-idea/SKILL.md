@@ -38,12 +38,17 @@ Detect which case you're in by checking whether `$ARGUMENTS` looks like a file p
    - Verdict: `SURVIVED`, `SURVIVED WITH FLAGS`, `RESHAPED & SURVIVED`, `SURVIVED AFTER DEBATE`, or `KILLED`
    - Number of FLAGs accumulated (and at which gates)
    - Whether it was reshaped (and if so, show the final version, not the original)
-3. **Present the ideas as an interactive choice using AskUserQuestion.** Ask: "Which idea would you like to build?"
-   - One option per idea extracted from the report
-   - Label: the idea name
-   - Description: verdict + FLAG count + reshape note (e.g., "Survived with 2 FLAGs (sales, legal), reshaped 1x" or "Killed at finance gate")
+3. You MUST call the `AskUserQuestion` tool (not plain text — the actual tool) to let the user pick which idea to build. Do NOT present options as markdown text. Call `AskUserQuestion` with:
+   - question: "Which idea would you like to build?"
+   - header: "Pick idea"
+   - One option per idea extracted from the report:
+     - label: the idea name
+     - description: verdict + FLAG count + reshape note (e.g., "Survived with 2 FLAGs (sales, legal), reshaped 1x" or "Killed at finance gate")
    - Do not pick one automatically — even if there's only one survivor. Always ask.
-   - If the user picks a KILLED idea, show a one-line warning ("This idea was killed at the [X] gate — reason: [Y]. Proceed anyway?") using a second AskUserQuestion with "Yes, build it anyway" and "No, pick a different idea" as options.
+   - If the user picks a KILLED idea, call `AskUserQuestion` again with a warning:
+     - question: "This idea was killed at the [X] gate — reason: [Y]. Proceed anyway?"
+     - header: "Warning"
+     - Options: label "Yes, build it anyway" / label "No, pick a different idea"
 4. Once the user confirms, **extract the full details of the chosen idea** from the report — including:
    - Final version of the idea (if reshaped, use the reshaped version — never the original)
    - All FLAGs from any gate (market/product/finance/sales/legal)
@@ -55,15 +60,22 @@ Detect which case you're in by checking whether `$ARGUMENTS` looks like a file p
 1. Normalize the idea into the same structured format `/evaluate-idea` produces (one-liner, problem, solution, target user, revenue model, assumed distribution, key differentiator).
 2. Fill in missing fields with reasonable assumptions and flag each assumption explicitly so the user can correct them.
 3. Note that there are **no FLAGs** to carry forward (the idea hasn't been through the funnel). The builders will be working from a blank slate, which is fine but less informed than building from a report.
-4. Present the normalized idea to the user and use AskUserQuestion to confirm. Ask: "Here's the normalized idea. Proceed with build?"
-   - **Yes, build it** (description: "Start the builder pipeline with this idea as-is")
-   - **Let me adjust first** (description: "I'll provide corrections to the assumptions") — if selected, ask the user for their corrections, re-normalize, and ask again.
+4. Present the normalized idea to the user as text, then call the `AskUserQuestion` tool (not plain text — the actual tool) to confirm. Call `AskUserQuestion` with:
+   - question: "Proceed with this normalized idea?"
+   - header: "Confirm"
+   - Options:
+     - label: "Yes, build it", description: "Start the builder pipeline with this idea as-is"
+     - label: "Let me adjust first", description: "I'll provide corrections to the assumptions"
+   - If "Let me adjust first" is selected, ask the user for their corrections, re-normalize, and call `AskUserQuestion` again.
 
 ### Case C — `$ARGUMENTS` is empty
 
-List the reports available in `output/find-ideas/` and `output/evaluate-idea/` (most recent first). Present them as an interactive choice using AskUserQuestion. Ask: "Which report would you like to build from?" with one option per report file:
-- Label: the filename (e.g., `2026-04-11-run-6.md`)
-- Description: brief context if parseable from the filename (e.g., "find-ideas run" or "evaluate-idea: tenanthub-eu")
+List the reports available in `output/find-ideas/` and `output/evaluate-idea/` (most recent first). You MUST call the `AskUserQuestion` tool (not plain text — the actual tool) to let the user pick. Call `AskUserQuestion` with:
+- question: "Which report would you like to build from?"
+- header: "Pick report"
+- One option per report file:
+  - label: the filename (e.g., `2026-04-11-run-6.md`)
+  - description: brief context if parseable from the filename (e.g., "find-ideas run" or "evaluate-idea: tenanthub-eu")
 
 Once the user picks a report, proceed as Case A.
 
