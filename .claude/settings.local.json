@@ -1,0 +1,27 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "Bash(cat)",
+      "Read(//tmp/**)",
+      "WebFetch(domain:termly.io)",
+      "Bash(curl -s \"https://www.g2.com/products/wave-accounting/competitors\")",
+      "WebFetch(domain:kosenai.com)",
+      "WebFetch(domain:www.shotkraft.com)",
+      "Bash(grep:*)",
+      "Bash(find:*)",
+      "Bash(ls -lt /Users/ayoublesfer/Documents/Dev/idea-swarm/output/*.md)",
+      "Bash(curl -s \"https://www.google.com\")",
+      "Read(//private/tmp/**)",
+      "WebFetch(domain:www.venue.ink)",
+      "WebFetch(domain:www.getporter.io)",
+      "Bash(curl -s \"https://developers.strava.com/docs/authentication/\")",
+      "WebFetch(domain:www.strava.com)",
+      "WebFetch(domain:openai.com)",
+      "WebFetch(domain:privacy.claude.com)",
+      "Bash(mkdir -p output/find-ideas output/evaluate-idea output/build-idea)",
+      "Bash(mv output/2026-04-10-run.md output/2026-04-10-run-2.md output/2026-04-11-run.md output/2026-04-11-run-3.md output/2026-04-11-run-4.md output/2026-04-11-run-5.md output/2026-04-11-run-6.md output/find-ideas/)",
+      "Bash(mv output/2026-04-11-eval-coachgraph-stories.md output/2026-04-11-eval-saas-founder-health-dashboard.md output/2026-04-11-eval-scopeguard-wp.md output/evaluate-idea/)"
+    ]
+  }
+}
