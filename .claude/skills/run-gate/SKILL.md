@@ -59,6 +59,10 @@ Examples:
 
 **Standalone mode:** No prior context.
 
+**Founder channel fit (sales gate only, both modes):** if `learnings.md` exists, append its `## What this means for new ideas` section to the sales analyst and sales contrarian prompts under a `## Founder channel fit` heading, with this instruction:
+- Analyst: recommend only channels it allows; say which allowed channel reaches the first customers.
+- Contrarian: if the idea's first customers can only be reached through a channel it rules out (e.g. cold calls, in-person sales), that is a structural distribution problem: return RESHAPE with an allowed channel if one exists, otherwise KILL.
+
 ### Step 3: Run the gate
 
 Read `pipeline.md` to confirm gate order and get the gate numbering.

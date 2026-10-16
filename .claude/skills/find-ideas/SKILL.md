@@ -27,6 +27,10 @@ Use the **ideation** subagent to generate exactly 3 business ideas. The ideation
 
 If a focus was given, start the subagent prompt with `Focus: <focus>`. Otherwise send no Focus line.
 
+The ideation agent has no file access, so build its prompt from disk:
+- **Founder channel fit:** if `learnings.md` exists, include its `## What this means for new ideas` section verbatim under a `## Founder channel fit` heading.
+- **Already tried:** include the `## Rejected Ideas` entries from `rejected-ideas.md`, plus the idea names and one-liners from every report in `output/evaluate-idea/` and from the `## Log` table in `learnings.md`, as a do-not-repeat list.
+
 ### Step 2: Store Ideas
 
 If `.ideas/idea-*.md` files exist from a previous run, move them to `.ideas/previous/` first (replacing whatever is there), so the last batch stays available as `.ideas/previous/idea-N.md`.
@@ -53,6 +57,7 @@ Each file should contain the full idea description in structured format:
 **Estimated user base:** [Realistic number of addressable users]
 **Key differentiator:** [Why this beats incumbents]
 **Focus fit:** [Only when a focus was given]
+**Channel fit:** [How the first customers are reached within learnings.md, when present]
 ```
 
 ### Step 3: Present Ideas and Prompt
@@ -88,4 +93,4 @@ Then call `AskUserQuestion` with exactly 3 options:
 - Do NOT invoke analyst/contrarian/advocate subagents — that's evaluate-idea's job.
 - Do NOT run any evaluation logic — just generate, store, and present.
 - `.ideas/idea-{1,2,3}.md` is the current batch; the one before it lives in `.ideas/previous/`.
-- The ideation agent handles web search and rejected-ideas.md filtering internally.
+- The ideation agent handles web search; you pass it the rejected/tried ideas and founder channel fit (Step 1), since it can't read files.

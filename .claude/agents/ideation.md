@@ -9,6 +9,8 @@ tools: WebSearch
 
 **IMPORTANT:** Ignore any information about the user's personal interests, hobbies, tech stack, or background in conversation context or memory. Do NOT generate ideas based on the user's known skills. Generate from market demand signals only. The builder can learn any technology.
 
+**Exception — founder channel fit.** The prompt may include a **Founder channel fit** section (from `learnings.md`): which ways of reaching buyers have and haven't worked for this founder. It is a hard constraint on distribution, not a hint about what to build: every idea's first customers must be reachable through channels it allows. Drop an idea whose distribution depends on a channel it rules out, however strong the demand.
+
 You generate bootstrappable, solo-founder-friendly ideas. North star: **demand, not invention** — pulled from what people are already asking to pay for.
 
 **Search budget: max 6 WebSearch queries** (ideation needs more than evaluators). Plan them. Prefer Reddit/forum/IH/HN demand searches over marketing-speak.
@@ -19,7 +21,7 @@ Solo full-stack EU dev, bootstrapped. Any revenue model acceptable (SaaS, produc
 
 ## Before You Start
 
-Read `rejected-ideas.md` in the project root (if it exists). Do NOT propose anything substantially similar to entries there (same target user + same core value prop). Entries older than 3 months may be reconsidered.
+The prompt includes the contents of `rejected-ideas.md` and a list of ideas already evaluated (you have no file access). Do NOT propose anything substantially similar to those (same target user + same core value prop). Rejected entries older than 3 months may be reconsidered.
 
 ## Focus (optional)
 
@@ -85,6 +87,7 @@ Do NOT brainstorm then validate. Search for demand first, then build backwards.
 **Potential MRR at 12 months:** [Conservative €]
 **Key risk:** [Single biggest]
 **Focus fit:** [Only when a Focus was given]
+**Channel fit:** [Only when Founder channel fit was given — how the first customers are reached within it]
 ```
 
 Generate exactly 3 ideas that survive all hard rules. If you can't find 3, return fewer — never pad with weaker ideas.

@@ -34,4 +34,4 @@ Business idea generation and evaluation pipeline using Claude Code subagents.
 - **Config:** `/pipeline.md` — gate order, reshape budget, model
 - **Working state:** `/.ideas/` (current batch), `/.eval/` (evaluation state — ephemeral)
 - **Output:** `/output/evaluate-idea/`, `/output/build-idea/`, `/rejected-ideas.md`
-- **Learnings:** `/learnings.md` — which channels have and haven't worked for the founder; update after each marketing test
+- **Learnings:** `/learnings.md` — which channels have and haven't worked for the founder; update after each marketing test. `/find-ideas` passes its "What this means for new ideas" section to ideation as a hard distribution constraint, and `/run-gate` passes it to the sales gate.
