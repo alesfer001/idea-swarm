@@ -5,7 +5,7 @@ Business idea generation and evaluation pipeline using Claude Code subagents.
 ## Workflow
 
 ```
-/find-ideas              → generates 3 ideas, stores in .ideas/
+/find-ideas [focus]      → generates 3 ideas, stores in .ideas/ (previous batch → .ideas/previous/)
 /evaluate-idea 1         → normalizes idea, initializes .eval/
 /run-gate market         → runs market gate
 /clear                   → optional: save tokens

@@ -21,6 +21,16 @@ Solo full-stack EU dev, bootstrapped. Any revenue model acceptable (SaaS, produc
 
 Read `rejected-ideas.md` in the project root (if it exists). Do NOT propose anything substantially similar to entries there (same target user + same core value prop). Entries older than 3 months may be reconsidered.
 
+## Focus (optional)
+
+The prompt may include a **Focus** line (e.g. "self-serve digital products that sell and deliver without the founder's ongoing time"). When it does:
+- Every idea must fit the focus. An idea that misses it is dropped, however strong its demand.
+- Spend your searches on pain within the focus, still across 5+ distinct industries.
+- Where the focus conflicts with a hard rule below (e.g. "prefer boring B2B", SOM floor), the focus wins; say in **Key risk** which rule was relaxed.
+- Add a **Focus fit:** line to each idea saying how it meets the focus.
+
+Without a Focus line, generate as usual.
+
 ## The Demand-First Process
 
 Do NOT brainstorm then validate. Search for demand first, then build backwards.
@@ -74,6 +84,7 @@ Do NOT brainstorm then validate. Search for demand first, then build backwards.
 **Estimated MVP time:** [Realistic solo dev]
 **Potential MRR at 12 months:** [Conservative €]
 **Key risk:** [Single biggest]
+**Focus fit:** [Only when a Focus was given]
 ```
 
 Generate exactly 3 ideas that survive all hard rules. If you can't find 3, return fewer — never pad with weaker ideas.

@@ -15,13 +15,21 @@ You generate business ideas and store them for evaluation. You are a **lightweig
 - Looking for viable business ideas that generate revenue — any business model is acceptable
 - Prefers lean, bootstrappable ideas over VC-scale moonshots
 
+## Input
+
+`$ARGUMENTS` is an optional **focus**, e.g. `/find-ideas "self-serve digital products that run without me"`. Empty means an open run.
+
 ## Pipeline
 
 ### Step 1: Generate Ideas
 
 Use the **ideation** subagent to generate exactly 3 business ideas. The ideation agent follows a demand-first, search-first process and will read `rejected-ideas.md` before generating, to avoid proposing ideas that have already been killed by this pipeline.
 
+If a focus was given, start the subagent prompt with `Focus: <focus>`. Otherwise send no Focus line.
+
 ### Step 2: Store Ideas
+
+If `.ideas/idea-*.md` files exist from a previous run, move them to `.ideas/previous/` first (replacing whatever is there), so the last batch stays available as `.ideas/previous/idea-N.md`.
 
 Parse the ideation output and extract each idea. For each idea, write a self-contained markdown file to `.ideas/`:
 
@@ -29,7 +37,7 @@ Parse the ideation output and extract each idea. For each idea, write a self-con
 - `.ideas/idea-2.md`
 - `.ideas/idea-3.md`
 
-Create the `.ideas/` directory if it doesn't exist. **Overwrite** any existing files from a previous run.
+Create the `.ideas/` directory if it doesn't exist.
 
 Each file should contain the full idea description in structured format:
 
@@ -44,6 +52,7 @@ Each file should contain the full idea description in structured format:
 **Distribution channel:** [Specific channel where customers already are]
 **Estimated user base:** [Realistic number of addressable users]
 **Key differentiator:** [Why this beats incumbents]
+**Focus fit:** [Only when a focus was given]
 ```
 
 ### Step 3: Present Ideas and Prompt
@@ -78,5 +87,5 @@ Then call `AskUserQuestion` with exactly 3 options:
 
 - Do NOT invoke analyst/contrarian/advocate subagents — that's evaluate-idea's job.
 - Do NOT run any evaluation logic — just generate, store, and present.
-- Always overwrite `.ideas/idea-{1,2,3}.md` on each run — these are the "current batch."
+- `.ideas/idea-{1,2,3}.md` is the current batch; the one before it lives in `.ideas/previous/`.
 - The ideation agent handles web search and rejected-ideas.md filtering internally.
