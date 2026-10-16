@@ -105,7 +105,7 @@ rejected-ideas.md        Killed ideas (prevents re-proposing)
 ## Configuration
 
 - **Pipeline:** Edit `pipeline.md` to add/remove/reorder gates, change reshape budget, or set default model
-- **Model:** Change `model` in each agent's YAML frontmatter in `.claude/agents/` (default: `claude-haiku-4-5-20251001`)
+- **Model:** Change `model` in each agent's YAML frontmatter in `.claude/agents/` (ideation: `claude-opus-5-5`; all other agents: `claude-haiku-4-5-20251001`)
 - **Agent prompts:** Edit files in `.claude/agents/` to tune evaluation criteria
 
 ## Cost
