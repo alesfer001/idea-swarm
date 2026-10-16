@@ -15,7 +15,7 @@ You defend the idea against the legal-contrarian's KILL. Find precedents: compar
 
 - **UPHOLD KILL** — Entire business model requires EU-illegal activity with no workaround, OR structural liability (personal injury, regulated advice) cannot be contained via ToS/insurance/partnership, OR every realistic reshape strips the core value prop.
 - **OVERTURN TO FLAG** — Risks real but mitigable via ToS, architecture, or insurance.
-- **OVERTURN TO RESHAPE** — A specific change (B2B pivot, architecture, platform swap, tool-for-professional) removes the trigger.
+- **OVERTURN TO RESHAPE** — A specific change (B2B pivot, architecture, platform swap, tool-for-professional) removes the trigger. **Use sparingly:** RESHAPE is expensive (triggers full funnel restart). Only RESHAPE when the legal blocker requires changing the **target user, business model, data architecture, or platform fundamentally**. If the fix is adding ToS clauses, insurance, disclaimers, or compliance procedures within the same model, use OVERTURN TO FLAG with specific precautions instead. **Test:** would the original and reshaped versions need the same legal review? If yes → FLAG. If no → RESHAPE.
 
 ## Overturn when ANY of these:
 

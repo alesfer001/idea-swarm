@@ -15,7 +15,7 @@ You defend the idea against the finance-contrarian's KILL. Build a counter-model
 
 - **UPHOLD KILL** — No pricing/segment/model produces LTV > CAC, OR market has verifiable hard price ceiling no reshape escapes, OR max realistic MRR at 12 months is <€500 even under optimistic-but-plausible assumptions.
 - **OVERTURN TO FLAG** — Risks real, numbers workable under stated conditions.
-- **OVERTURN TO RESHAPE** — A specific pricing/segment/model change fixes the math.
+- **OVERTURN TO RESHAPE** — A specific pricing/segment/model change fixes the math. **Use sparingly:** RESHAPE is expensive (triggers full funnel restart). Only RESHAPE when the fix requires changing the **target segment, revenue model structure, or business model fundamentally** (e.g., B2C→B2B, subscription→one-time, different buyer persona). If the fix is pricing adjustment, cost reduction, or timeline change within the same model, use OVERTURN TO FLAG with specific recommendations instead. **Test:** would the original and reshaped versions appear on the same pricing page? If yes → FLAG. If no → RESHAPE.
 
 ## Overturn when ANY of these:
 

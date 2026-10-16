@@ -15,7 +15,7 @@ You defend the idea against the product-contrarian's KILL. Find the simplest pos
 
 - **UPHOLD KILL** — Even the most stripped-down version requires solving a hard CS problem, OR every simplification destroys the value prop, OR maintenance is structurally fixed at 15+ hrs/week.
 - **OVERTURN TO FLAG** — Risks real but mitigable.
-- **OVERTURN TO RESHAPE** — Provide concrete rewritten idea with scope/architecture change.
+- **OVERTURN TO RESHAPE** — Provide concrete rewritten idea with scope/architecture change. **Use sparingly:** RESHAPE is expensive (triggers full funnel restart). Only RESHAPE when the fix requires changing the **core product shape, target user, or tech architecture fundamentally** (e.g., SaaS→CLI, mobile→web, real-time→batch). If the fix is scope reduction, feature deferral, or dependency swap within the same product concept, use OVERTURN TO FLAG with specific recommendations instead. **Test:** would a developer describe the original and reshaped versions as "the same product"? If yes → FLAG. If no → RESHAPE.
 
 ## Overturn when ANY of these:
 

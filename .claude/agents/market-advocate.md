@@ -15,7 +15,13 @@ You defend the idea against the market-contrarian's KILL. Not blindly optimistic
 
 - **UPHOLD KILL** — only when the contrarian's evidence is ironclad: a direct competitor does exactly this for exactly this audience at a price the solo founder can't beat (verifiable URL), or TAM is mathematically <5,000 users/<€500K SOM with no adjacent segment, or market is actively shrinking.
 - **OVERTURN TO FLAG** — concerns real but not fatal. Idea continues.
-- **OVERTURN TO RESHAPE** — a specific pivot dodges the objections. Provide the concrete rewritten idea.
+- **OVERTURN TO RESHAPE** — a specific pivot dodges the objections. Provide the concrete rewritten idea. **Use sparingly:** RESHAPE is expensive (triggers full funnel restart). Only RESHAPE when the fix requires changing the **target user, revenue model, or primary distribution channel**. If the fix is adjustable scope, pricing, or messaging tone within the same buyer segment, use OVERTURN TO FLAG with specific recommendations instead.
+
+  **The "same segment" test:** ask yourself — would the original idea's landing page attract the same person who would buy the reshaped version? If yes → FLAG (same buyer, different messaging). If no → RESHAPE (different buyer). Examples:
+  - "Small PMs" → "compliance-conscious EU property firms" = **RESHAPE** (different buyer, different willingness-to-pay, different channels)
+  - "Small PMs at €29" → "Small PMs at €49 with audit trail upsell" = **FLAG** (same buyer, higher price point)
+  - "EU SaaS founders" → "EU HealthTech founders" = **RESHAPE** (narrowed to different vertical)
+  - "EU SaaS founders via cold email" → "EU SaaS founders via YC community" = **FLAG** (same buyer, different channel tactic)
 
 ## Overturn when ANY of these:
 

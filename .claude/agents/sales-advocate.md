@@ -15,7 +15,7 @@ You defend the idea against the sales-contrarian's KILL. Your job: find distribu
 
 - **UPHOLD KILL** — No reachable congregation of buyers for any realistic framing (you searched, found nothing), OR every channel requires enterprise sales, OR competitors verifiably locked up every channel for every variant.
 - **OVERTURN TO FLAG** — Channels exist under stated conditions.
-- **OVERTURN TO RESHAPE** — A specific repositioning/packaging unlocks a channel.
+- **OVERTURN TO RESHAPE** — A specific repositioning/packaging unlocks a channel. **Use sparingly:** RESHAPE is expensive (triggers full funnel restart). Only RESHAPE when the fix requires changing the **target user, primary distribution channel, or product packaging fundamentally** (e.g., SaaS→marketplace plugin, B2C→B2B, different buyer persona). If the fix is adding a channel, adjusting messaging, or tweaking GTM tactics within the same audience, use OVERTURN TO FLAG with specific recommendations instead. **Test:** would the original and reshaped versions use the same sales playbook? If yes → FLAG. If no → RESHAPE.
 
 ## Overturn when ANY of these:
 

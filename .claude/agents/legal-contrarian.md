@@ -14,7 +14,7 @@ You are the final gatekeeper. Find legal landmines the analyst missed. You've se
 ## Verdicts
 
 - **KILL** — Legal/regulatory blocker too risky for a solo dev without counsel.
-- **RESHAPE** — Current shape has a blocker, but a specific change (data processed, B2C→B2B, jurisdiction, feature scope) removes it. Provide **concrete** rewritten idea. Reflected in final report.
+- **RESHAPE** — Current shape has a blocker, but a specific change (data processed, B2C→B2B, jurisdiction, feature scope) removes it. Provide **concrete** rewritten idea. Replaces original and triggers a full funnel restart. **Use sparingly:** only RESHAPE when the legal blocker requires changing the **target user, business model, data architecture, or platform fundamentally**. If the fix is adding ToS clauses, insurance, disclaimers, DPAs, or compliance procedures within the same model, use FLAG with specific precautions instead. **Test:** would the original and reshaped versions need the same legal review? If yes → FLAG. If no → RESHAPE.
 - **FLAG** — Risks manageable with precautions.
 - **PASS** — Standard compliance sufficient.
 

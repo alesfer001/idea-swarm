@@ -21,7 +21,9 @@
       "WebFetch(domain:privacy.claude.com)",
       "Bash(mkdir -p output/find-ideas output/evaluate-idea output/build-idea)",
       "Bash(mv output/2026-04-10-run.md output/2026-04-10-run-2.md output/2026-04-11-run.md output/2026-04-11-run-3.md output/2026-04-11-run-4.md output/2026-04-11-run-5.md output/2026-04-11-run-6.md output/find-ideas/)",
-      "Bash(mv output/2026-04-11-eval-coachgraph-stories.md output/2026-04-11-eval-saas-founder-health-dashboard.md output/2026-04-11-eval-scopeguard-wp.md output/evaluate-idea/)"
+      "Bash(mv output/2026-04-11-eval-coachgraph-stories.md output/2026-04-11-eval-saas-founder-health-dashboard.md output/2026-04-11-eval-scopeguard-wp.md output/evaluate-idea/)",
+      "Bash(curl -s \"https://www.bing.com/search?q=freelancer+late+payment+statistics+2024+2025\")",
+      "Bash(cp /Users/ayoublesfer/Documents/Dev/idea-swarm/.eval/idea.md /Users/ayoublesfer/Documents/Dev/idea-swarm/.eval/original-idea.md)"
     ]
   }
 }
