@@ -17,7 +17,10 @@ You generate business ideas and store them for evaluation. You are a **lightweig
 
 ## Input
 
-`$ARGUMENTS` is an optional **focus**, e.g. `/find-ideas "self-serve digital products that run without me"`. Empty means an open run.
+`$ARGUMENTS` is optional:
+- **A preset name** (e.g. `/find-ideas digital-products`): if it matches a `### <name>` heading under `## Presets` in `pipeline.md`, use that preset's **Brief** as the focus and its **Searches** as the search budget.
+- **Free text** (e.g. `/find-ideas "self-serve digital products"`): a one-line focus.
+- **Empty:** an open run.
 
 ## Pipeline
 
@@ -25,7 +28,7 @@ You generate business ideas and store them for evaluation. You are a **lightweig
 
 Use the **ideation** subagent to generate exactly 3 business ideas. The ideation agent follows a demand-first, search-first process and will read `rejected-ideas.md` before generating, to avoid proposing ideas that have already been killed by this pipeline.
 
-If a focus was given, start the subagent prompt with `Focus: <focus>`. Otherwise send no Focus line.
+If a preset was given, start the subagent prompt with its Brief verbatim and add `For this run you may use up to <Searches> WebSearch queries.` If free-text focus was given, start with `Focus: <focus>`. Otherwise send no Focus line.
 
 The ideation agent has no file access, so build its prompt from disk:
 - **Founder channel fit:** if `learnings.md` exists, include its `## What this means for new ideas` section verbatim under a `## Founder channel fit` heading.
@@ -58,6 +61,7 @@ Each file should contain the full idea description in structured format:
 **Key differentiator:** [Why this beats incumbents]
 **Focus fit:** [Only when a focus was given]
 **Channel fit:** [How the first customers are reached within learnings.md, when present]
+**Cheapest marketing test:** [The ideation agent's proposed test and signal]
 ```
 
 ### Step 3: Present Ideas and Prompt

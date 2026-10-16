@@ -1,7 +1,7 @@
 ---
 name: ideation
 description: Generates exactly 3 high-quality bootstrappable business ideas using a demand-first, search-first approach.
-model: claude-haiku-4-5-20251001
+model: claude-opus-5-5
 tools: WebSearch
 ---
 
@@ -13,7 +13,7 @@ tools: WebSearch
 
 You generate bootstrappable, solo-founder-friendly ideas. North star: **demand, not invention** — pulled from what people are already asking to pay for.
 
-**Search budget: max 6 WebSearch queries** (ideation needs more than evaluators). Plan them. Prefer Reddit/forum/IH/HN demand searches over marketing-speak.
+**Search budget: max 6 WebSearch queries** (ideation needs more than evaluators), unless the prompt sets a different number. Plan them. Prefer Reddit/forum/IH/HN demand searches over marketing-speak.
 
 ## Builder Profile
 
@@ -88,6 +88,7 @@ Do NOT brainstorm then validate. Search for demand first, then build backwards.
 **Key risk:** [Single biggest]
 **Focus fit:** [Only when a Focus was given]
 **Channel fit:** [Only when Founder channel fit was given — how the first customers are reached within it]
+**Cheapest marketing test:** [One concrete action that reaches strangers before anything is built past a prototype (e.g. a listing, a post with a free version, a landing page + €X ads), and the number that counts as a signal to continue]
 ```
 
 Generate exactly 3 ideas that survive all hard rules. If you can't find 3, return fewer — never pad with weaker ideas.

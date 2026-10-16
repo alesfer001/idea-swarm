@@ -5,7 +5,8 @@ Business idea generation and evaluation pipeline using Claude Code subagents.
 ## Workflow
 
 ```
-/find-ideas [focus]      → generates 3 ideas, stores in .ideas/ (previous batch → .ideas/previous/)
+/find-ideas [preset|focus] → generates 3 ideas, stores in .ideas/ (previous batch → .ideas/previous/)
+                           presets live in pipeline.md, e.g. /find-ideas digital-products
 /evaluate-idea 1         → normalizes idea, initializes .eval/
 /run-gate market         → runs market gate
 /clear                   → optional: save tokens
@@ -25,7 +26,7 @@ Business idea generation and evaluation pipeline using Claude Code subagents.
 
 - **Reshape budget:** max 2 per idea. RESHAPE = structural change only (target user, revenue model, product shape, distribution channel). Pricing/messaging/scope tweaks = FLAG.
 - **Business model:** no restrictions. SaaS, services, info products, templates, marketplaces, hybrid — all acceptable. Evaluate on demand, viability, and solo-executability.
-- **All 21 agents** use `claude-haiku-4-5-20251001`. Change via `model` field in agent frontmatter.
+- **Models:** ideation uses `claude-opus-5-5`; the other 20 agents use `claude-haiku-4-5-20251001`. Change via `model` field in agent frontmatter.
 
 ## Architecture
 
