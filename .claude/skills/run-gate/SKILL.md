@@ -199,6 +199,8 @@ The gate agents run on a smaller model; you are the check on them. After each an
 
 Record what you find as **"Orchestrator note:"** bullets in the gate file's `## Summary`. Never edit `## Full Output`. Pass the notes to the next agent: the contrarian gets them as "Verify specifically", and later gates see them through the summaries. Your notes don't change a verdict on their own; the contrarian or advocate decides.
 
+**Tell the user your take, in chat, after every agent** (auto mode included). Do this before launching the next agent. Give a short block per agent: its verdict and score, the 2–3 findings that matter, then "My take:", where you say what you believe, what you doubt and why (the orchestrator notes in plain words), and whether the verdict looks right to you. Don't just say that the next agent is running.
+
 ## Gate file format
 
 Every gate result file in `.eval/gates/` MUST use this format:
