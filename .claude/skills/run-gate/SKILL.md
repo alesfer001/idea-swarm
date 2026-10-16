@@ -71,9 +71,10 @@ Read `pipeline.md` to confirm gate order and get the gate numbering.
 
 1. Read `.eval/idea.md` (or the standalone idea)
 2. Use the **[gate]-analyst** subagent → pass current idea + prior_summaries
-3. **Compress** the analyst output into a 150-word summary (you do this, not a subagent)
-4. **Pipeline mode:** Write to `.eval/gates/NN-[gate]-analyst.md` using the gate file format. **The `## Full Output` section MUST contain the complete agent output verbatim — no placeholders.**
-5. **Pipeline mode:** Update `.eval/state.md`: set `current_step: contrarian`
+3. **Review** the analyst output before passing it on (see "Orchestrator review" below)
+4. **Compress** the analyst output into a 150-word summary (you do this, not a subagent)
+5. **Pipeline mode:** Write to `.eval/gates/NN-[gate]-analyst.md` using the gate file format. **The `## Full Output` section MUST contain the complete agent output verbatim — no placeholders.**
+6. **Pipeline mode:** Update `.eval/state.md`: set `current_step: contrarian`
 
 #### 3b: Run the contrarian
 
@@ -81,8 +82,9 @@ Read `pipeline.md` to confirm gate order and get the gate numbering.
 2. Read `.eval/idea.md` for the current idea
 3. If `reshape_depth >= reshape_budget` (from state.md), append to the agent prompt: `**RESHAPE BUDGET EXHAUSTED.** You MUST NOT return RESHAPE. Use FLAG with specific recommendations instead.`
 4. If `reshape_depth >= 1`, prepend to the idea: `**Reshape context:** This idea was reshaped [N] time(s). Evaluate AS PRESENTED.`
-5. Use the **[gate]-contrarian** subagent → pass current idea + prior summaries
-6. **Pipeline mode:** Write to `.eval/gates/NN-[gate]-contrarian.md`. **The `## Full Output` section MUST contain the complete agent output verbatim — no placeholders.**
+5. Use the **[gate]-contrarian** subagent → pass current idea + prior summaries, plus a **"Verify specifically"** list: the issues your review of the analyst found, and the analyst's load-bearing claims (the ones the verdict rests on)
+6. **Review** the contrarian output the same way before acting on its verdict
+7. **Pipeline mode:** Write to `.eval/gates/NN-[gate]-contrarian.md`. **The `## Full Output` section MUST contain the complete agent output verbatim — no placeholders.**
 
 **Handle the verdict:**
 
@@ -94,8 +96,9 @@ Read `pipeline.md` to confirm gate order and get the gate numbering.
 
 #### 3c: Run the advocate (only on KILL)
 
-1. Invoke the **[gate]-advocate** with the idea + analyst summary + contrarian's KILL reasoning
-2. **Pipeline mode:** Write to `.eval/gates/NNb-[gate]-advocate.md`. **Full Output must be complete and verbatim.**
+1. Invoke the **[gate]-advocate** with the idea + analyst summary + contrarian's KILL reasoning, plus your orchestrator notes on the contrarian
+2. **Review** the advocate output (see "Orchestrator review")
+3. **Pipeline mode:** Write to `.eval/gates/NNb-[gate]-advocate.md`. **Full Output must be complete and verbatim.**
 
 **Handle the advocate verdict:**
 - **UPHOLD KILL:** Update state.md: `status: killed`, `killed_at: [gate]`. Go to Step 5 (killed).
@@ -184,6 +187,17 @@ Then determine the next gate from `gates_order` in state.md and tell the user:
   
 You can /clear first to save context.
 ```
+
+## Orchestrator review
+
+The gate agents run on a smaller model; you are the check on them. After each analyst, contrarian and advocate output, before writing the gate file:
+
+- **Facts:** dates, deadlines, thresholds, prices, fees, laws and regulators. Flag anything that looks wrong or that a later agent contradicts.
+- **Internal consistency:** numbers that don't add up (e.g. a sales projection that contradicts the market gate's size, a table whose rows don't match its own inputs), and conclusions that don't follow from the evidence.
+- **Founder context:** assumptions that contradict the idea or `learnings.md` (e.g. pricing the founder's time at freelance day rates for a side project, assuming no budget when none was stated, recommending a ruled-out channel).
+- **Honesty:** suggested marketing copy that makes untrue claims (invented testimonials, "customers said" before there are customers, implied official endorsement).
+
+Record what you find as **"Orchestrator note:"** bullets in the gate file's `## Summary`. Never edit `## Full Output`. Pass the notes to the next agent: the contrarian gets them as "Verify specifically", and later gates see them through the summaries. Your notes don't change a verdict on their own; the contrarian or advocate decides.
 
 ## Gate file format
 
